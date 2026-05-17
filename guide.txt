@@ -1,0 +1,586 @@
+PMDD PROJECT
+Pragmatic Meaning Drift Detector
+Complete Step-by-Step Guide
+Platform: Antigravity IDE (Google)   ·   
+Backend: OpenAI GPT-4o   ·   
+Agents: 5   ·   
+Language: Python
+🔵
+Agent 1
+Preprocessor
+🟢
+Agent 2
+Pragmatic
+🟣
+Agent 3
+Semantic
+🟡
+Agent 4
+Statistics
+🔴
+Agent 5
+Orchestrator
+SECTION 1 · What Is This Project?
+PMDD stands for Pragmatic Meaning Drift Detector. It is a 5-agent AI application built on Antigravity IDE that analyses how language meaning shifts across a document or corpus — automatically, using proven academic linguistic theories.
+Simple Analogy
+A doctor does not just say 'you look sick.' They run blood tests, X-rays, and produce a report with evidence. PMDD does the same for language. Instead of saying 'the tone changed,' it runs 5 AI tests and reports exactly WHICH words shifted, WHERE, and WHY — citing the academic theory that explains it.
+1.1  What PMDD Does
+You upload a text file (political speech, academic paper, news archive, company reports). You type target keywords. PMDD's five agents work one by one to produce a full linguistic drift report with a Drift Score out of 100.
+1.2  Drift Score Formula
+Dimension
+Weight
+Source Agent
+What It Measures
+Pragmatic Drift
+40%
+Agent 2
+Change in what sentences DO (commands vs assertions)
+Semantic Drift
+30%
+Agent 3
+Change in what keywords MEAN across sections
+Register Drift
+20%
+Agent 3
+Change in language style (formal ↔ informal)
+Statistical Strength
+10%
+Agent 4
+Mathematical evidence supporting drift findings
+SECTION 2 · The Five Agents — Who Does What?
+Each agent has ONE job. They run in sequence: 1 → 2 → 3 → 4 → 5. Agent 5 can also ask any earlier agent to re-run if quality is insufficient.
+🔵
+AGENT 01
+Corpus Preprocessor
+Reads your raw file, cleans it, and splits it into numbered segments (S001, S002…) that all other agents use.
+INPUT: 
+Raw uploaded file (.txt / .csv / .pdf / .json)
+OUTPUT: 
+Structured JSON: [{id, text, word_count, position, section}]
+🟢
+AGENT 02
+Pragmatic Analyzer
+Reads every segment and classifies what each sentence is DOING — asserting, commanding, promising, evaluating. Also detects politeness and Grice violations.
+INPUT: 
+Segments JSON from Agent 1
+OUTPUT: 
+Enriched JSON: speech_act, politeness_score, maxim_violations, implicature_type per segment
+🟣
+AGENT 03
+Semantic & Register Detector
+Tracks what your target keywords MEAN in each section. Detects if a word moves from one semantic field to another. Also classifies register: formal, informal, academic, colloquial.
+INPUT: 
+Segments + target keywords
+OUTPUT: 
+Semantic drift map per keyword + register classification per segment
+🟡
+AGENT 04
+Corpus Statistician
+Runs mathematics: word frequency, collocation, MI score, keyness, Type-Token Ratio. Proves the drift findings with numbers.
+INPUT: 
+Annotated segments
+OUTPUT: 
+Frequency tables, collocations, MI scores, TTR per section
+🔴
+AGENT 05
+Orchestrator & Report Writer
+Collects all four outputs, checks quality, calculates the Drift Score, and writes the full academic linguistic report. Can trigger re-analysis of any earlier agent.
+INPUT: 
+All outputs from Agents 1–4
+OUTPUT: 
+Full report (Markdown) + Evidence JSON + Dashboard Drift Score
+SECTION 3 · Antigravity IDE — Project Setup
+3.1  Create This Folder Structure
+In Antigravity IDE, create a new project folder called pmdd_project and build this structure:
+pmdd_project/
+│
+├── app.py                        # Main Gradio app — run this to start the tool
+├── requirements.txt              # All Python libraries to install
+│
+├── agents/
+│   ├── __init__.py               # Empty file — makes agents a Python package
+│   ├── agent1_preprocessor.py    # Agent 1 code
+│   ├── agent2_pragmatic.py       # Agent 2 code
+│   ├── agent3_semantic.py        # Agent 3 code
+│   ├── agent4_statistics.py      # Agent 4 code
+│   └── agent5_orchestrator.py    # Agent 5 code
+│
+├── utils/
+│   ├── __init__.py
+│   └── helpers.py               # Shared utility functions
+│
+└── outputs/
+    └── reports/                 # All generated reports saved here
+3.2  Install Required Libraries
+In Antigravity IDE terminal, run these commands ONE BY ONE:
+pip install openai
+pip install spacy
+pip install nltk
+pip install pandas
+pip install gradio
+pip install pymupdf
+# Download the spaCy English language model
+python -m spacy download en_core_web_sm
+3.3  requirements.txt — Paste This Exactly
+openai>=1.0.0
+spacy>=3.7.0
+nltk>=3.8.0
+pandas>=2.0.0
+gradio>=4.0.0
+pymupdf>=1.23.0
+SECTION 4 · Step-by-Step Prompts for Antigravity AI
+What Are These Prompts?
+Antigravity IDE has an AI assistant built in. Instead of writing code from scratch, you TYPE these prompts to the AI and it writes the code for you. Copy each prompt exactly, paste it into Antigravity's AI chat, and press Enter. The AI generates the code. You then save it to the correct file.
+STEP 1  ·  PROMPT FOR AGENT 1 — Corpus Preprocessor
+FILE TO SAVE: agents/agent1_preprocessor.py
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write a Python file called agent1_preprocessor.py for a linguistics project.
+This is Agent 1 of a 5-agent system called PMDD (Pragmatic Meaning Drift Detector).
+Requirements:
+1. Create a function called run_agent1(file_path: str) -> dict
+2. Accept .txt, .csv, .json, and .pdf file formats
+3. For PDF files, use the pymupdf library (import fitz)
+4. Clean the text: remove HTML tags, normalize whitespace, fix encoding issues
+5. Use spaCy (en_core_web_sm) to split the text into sentences
+6. Group every 3 sentences into one segment
+7. Number each segment as S001, S002, S003... etc
+8. Detect section boundaries: if the corpus has clear headings or paragraph breaks,
+   mark each segment with a section label (Section_1, Section_2, etc.)
+9. Return a Python dict with this exact structure:
+   {
+     'corpus_stats': {
+       'total_segments': int,
+       'total_words': int,
+       'total_sentences': int,
+       'sections_detected': int
+     },
+     'segments': [
+       {
+         'id': 'S001',
+         'text': 'The segment text here.',
+         'word_count': int,
+         'position': float,   # 0.0 = start, 1.0 = end of document
+         'section': 'Section_1'
+       }
+     ]
+   }
+10. Add docstrings and comments explaining each step
+11. Handle file-not-found errors and encoding errors gracefully with try/except
+STEP 2  ·  PROMPT FOR AGENT 2 — Pragmatic Analyzer
+FILE TO SAVE: agents/agent2_pragmatic.py
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write a Python file called agent2_pragmatic.py for a linguistics project.
+This is Agent 2 (Pragmatic Analyzer) of a 5-agent PMDD system.
+The system prompt below MUST be used exactly as written — it defines the linguistic
+framework for the agent. Do not paraphrase or shorten it.
+SYSTEM PROMPT FOR GPT-4o (embed this as a string variable called AGENT2_SYSTEM_PROMPT):
+---
+You are an expert computational linguist specialising in pragmatics.
+Your task is to analyse a text segment using three precise linguistic frameworks.
+FRAMEWORK 1 — SPEECH ACT THEORY (Searle 1969):
+Classify the dominant speech act as exactly one of:
+  - assertive: states a fact, belief, or description
+  - directive: commands, requests, or instructs the listener
+  - commissive: commits the speaker to a future action (promises, pledges)
+  - expressive: expresses emotional or evaluative stance
+  - declarative: changes reality by being spoken (official proclamations)
+Also provide a Layer 4 sub-type — a specific function such as:
+  evaluative_assertion, compliance_framing, indirect_directive,
+  solidarity_appeal, threat_implication, hedge_assertion
+FRAMEWORK 2 — GRICEAN MAXIMS (Grice 1975):
+Identify any violations of the Cooperative Principle:
+  - Quantity: too much or too little information given
+  - Quality: unverifiable, vague, or potentially false claim
+  - Relation: segment seems off-topic or irrelevant
+  - Manner: unclear, ambiguous, or unnecessarily verbose
+If no violation: return []
+FRAMEWORK 3 — POLITENESS THEORY (Brown & Levinson 1987):
+Score politeness on a scale of 1 to 5:
+  1 = very face-threatening (aggressive, dismissive, authoritarian)
+  2 = mildly face-threatening
+  3 = neutral
+  4 = polite (hedging, inclusive language)
+  5 = highly polite (deferential, solidarity-building)
+Return ONLY valid JSON with this exact structure — no other text:
+{
+  'speech_act': 'assertive',
+  'speech_act_subtype': 'evaluative_assertion',
+  'maxim_violations': ['Quality', 'Manner'],
+  'implicature': 'conventional',
+  'politeness_score': 2,
+  'evidence': 'The exact quoted phrase that triggered this classification'
+}
+---
+CODE REQUIREMENTS:
+1. Import openai and json
+2. Create a variable API_KEY = 'YOUR_OPENAI_API_KEY_HERE' at the top
+3. Create a function analyze_segment(segment_text: str) -> dict that calls GPT-4o
+   with temperature=0.1 and the system prompt above
+4. Parse the JSON response — if parsing fails, return a default dict with
+   speech_act='unknown' and empty fields
+5. Create a main function run_agent2(segments: list) -> list that loops through
+   all segments, calls analyze_segment() for each, and merges the result
+   into each segment dict
+6. Print progress: 'Agent 2: Analysing segment S001 of 150...' for each segment
+7. Add a rate-limit safety: add time.sleep(0.5) between each API call
+8. Return the enriched list of segment dicts
+STEP 3  ·  PROMPT FOR AGENT 3 — Semantic & Register Detector
+FILE TO SAVE: agents/agent3_semantic.py
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write a Python file called agent3_semantic.py for a linguistics project.
+This is Agent 3 (Semantic Field and Register Detector) of a 5-agent PMDD system.
+SYSTEM PROMPT FOR GPT-4o (store as AGENT3_SYSTEM_PROMPT string):
+---
+You are an expert computational linguist specialising in semantic field theory
+and register analysis.
+TASK 1 — SEMANTIC FIELD ANALYSIS (Lyons 1977):
+For each provided target keyword, analyse how it is used in the given corpus section.
+Classify its semantic field as one of:
+  social_identity | political_power | institutional_authority | conflict |
+  solidarity | affect | economic | technological | environmental | cultural
+Classify its Layer 4 semantic function as one of:
+  boundary_exclusion | agency_assertion | compliance_framing |
+  threat_implication | solidarity_marker | authority_claim |
+  hedged_commitment | ideological_framing | mobilisation_appeal
+Identify the DRIFT TYPE compared to earlier sections:
+  field_transfer   — the word has moved to a completely different semantic field
+  strengthening    — the word has gained stronger/more intense meaning
+  weakening        — the word has lost intensity or been euphemised
+  narrowing        — the word now applies to a smaller set of referents
+  broadening       — the word now applies to a wider set of referents
+  no_drift         — meaning is stable
+Classify PROSODY (the emotional charge the word attracts):
+  positive | negative | neutral | mixed
+List the 5 most common words appearing near this keyword in the section.
+Write a CONNOTATION NOTE: a minimum 40-word academic explanation of what this
+keyword is ideologically doing in this section of the text.
+TASK 2 — REGISTER ANALYSIS (Halliday 1978):
+For the entire section text, classify the register as:
+  formal | semi-formal | informal | technical | colloquial | academic | political
+Note any REGISTER BORROWING — where formal vocabulary appears in informal context
+or vice versa.
+Return ONLY valid JSON — no other text:
+{
+  'keyword_analyses': [
+    {
+      'keyword': 'democracy',
+      'section': 'Section_1',
+      'semantic_field': 'political_power',
+      'semantic_subtype': 'agency_assertion',
+      'drift_type': 'field_transfer',
+      'prosody': 'positive',
+      'top_collocates': ['freedom', 'values', 'protect', 'our', 'restore'],
+      'connotation_note': '40+ word explanation here'
+    }
+  ],
+  'register': 'political',
+  'register_borrowing': 'Academic term sovereignty used in populist informal context'
+}
+---
+CODE REQUIREMENTS:
+1. Import openai, json, collections
+2. Variable API_KEY = 'YOUR_OPENAI_API_KEY_HERE'
+3. Function run_agent3(segments: list, keywords: list, section_labels: list) -> dict
+4. Group segments by section label
+5. For each section, build a combined text from all segment texts in that section
+6. Call GPT-4o with the system prompt above, passing: the section text + keywords list
+7. Collect all keyword analyses into a drift map: {keyword: [list of section analyses]}
+8. Return the full structured dict
+9. Print progress per section
+STEP 4  ·  PROMPT FOR AGENT 4 — Corpus Statistician
+FILE TO SAVE: agents/agent4_statistics.py
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write a Python file called agent4_statistics.py for a linguistics project.
+This is Agent 4 (Corpus Statistician) of a 5-agent PMDD system.
+This agent uses pure Python mathematics — it does NOT call the GPT-4o API.
+REQUIRED FUNCTIONS:
+1. compute_frequency(segments: list) -> dict
+   - Use collections.Counter to count word frequencies in each corpus section
+   - Return top 20 content words per section (exclude stopwords from NLTK)
+   - Format: {'Section_1': [('democracy', 45), ('people', 38), ...], 'Section_2': [...]}
+2. compute_ttr(segments: list) -> dict
+   - Type-Token Ratio = unique_words / total_words for each section
+   - Higher TTR = more diverse vocabulary
+   - Return: {'Section_1': 0.72, 'Section_2': 0.61}
+3. compute_collocations(segments: list, keywords: list, window: int = 5) -> dict
+   - For each keyword, find all words appearing within a 5-word window
+   - Count how often each collocate appears
+   - Return top 10 collocates per keyword per section
+   - Format: {'democracy': {'Section_1': [('freedom', 12), ...], 'Section_2': [...]}}
+4. compute_mi_score(word1_freq, word2_freq, bigram_freq, total_words) -> float
+   - Mutual Information: log2((bigram_freq * total_words) / (word1_freq * word2_freq))
+   - Returns a float: MI > 3.0 indicates significant collocation
+5. compute_keyness(section_a_words: list, section_b_words: list) -> list
+   - Find words that are statistically more frequent in section_a vs section_b
+   - Use simple log-likelihood ratio
+   - Return top 15 keywords with scores
+   - Format: [{'word': 'security', 'keyness_score': 34.2, 'section': 'Section_2'}]
+6. run_agent4(segments: list, keywords: list) -> dict
+   - Calls all functions above
+   - Returns combined dict with keys: frequencies, ttr, collocations, keyness
+   - Print progress messages for each computation step
+Use only: collections, math, nltk, re, pandas — NO openai library in this file.
+Download NLTK stopwords with: nltk.download('stopwords') at the top.
+STEP 5  ·  PROMPT FOR AGENT 5 — Orchestrator & Report Writer
+FILE TO SAVE: agents/agent5_orchestrator.py
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write a Python file called agent5_orchestrator.py for a linguistics project.
+This is Agent 5 (Orchestrator and Evidence Synthesizer) of a 5-agent PMDD system.
+This agent is the most important — it controls quality and writes the final report.
+SYSTEM PROMPT FOR GPT-4o (store as AGENT5_SYSTEM_PROMPT):
+---
+You are a senior computational linguist and discourse analyst.
+You have received structured outputs from four specialist AI agents that have
+analysed a text corpus for pragmatic and semantic meaning drift.
+Your job is to:
+1. Synthesise the findings into a rigorous academic linguistic report
+2. Calculate a Drift Score using this formula:
+   Drift Score = (40% x Pragmatic_Drift) + (30% x Semantic_Drift)
+                + (20% x Register_Drift) + (10% x Statistical_Strength)
+   Each sub-score must be 0-100. Justify each sub-score with evidence.
+3. Write the report with these exact sections:
+   ## Executive Summary
+   Two paragraphs summarising the key findings. Mention the corpus size,
+   the dominant speech act distribution, and the primary drift evidence.
+   ## Pragmatic Drift Evidence
+   Cite specific segment IDs (e.g. S045, S203) as evidence.
+   Report the percentage change in each speech act type across sections.
+   Identify any Gricean maxim violation trends.
+   ## Semantic Field Shifts
+   For each target keyword: report which semantic field it occupied in each section
+   and whether drift occurred. Quote the connotation notes from Agent 3.
+   Cite segment IDs for all examples.
+   ## Register Analysis
+   Report the dominant register per section. Note any register borrowing.
+   Explain the sociolinguistic significance of register shifts.
+   ## Corpus Statistics Summary
+   Report TTR per section. List the top 5 keyword collocations with MI scores.
+   Report the top 5 keyness words that distinguish each section.
+   ## Drift Score and Conclusions
+   Show the calculation: Pragmatic Drift: X/100 | Semantic Drift: X/100 |
+   Register Drift: X/100 | Statistical Strength: X/100
+   OVERALL DRIFT SCORE: XX/100
+   Interpret: No Drift (0-20) | Mild (21-40) | Moderate (41-60) |
+              Strong (61-80) | Extreme (81-100)
+   Write a concluding paragraph explaining the ideological or communicative
+   significance of the drift detected.
+---
+CODE REQUIREMENTS:
+1. Variables: API_KEY = 'YOUR_OPENAI_API_KEY_HERE'
+2. Function quality_check(a2_output, a3_output, a4_output) -> dict:
+   - Check: at least 60% of segments have a speech_act label (not 'unknown')
+   - Check: at least 1 keyword has drift_type != 'no_drift'
+   - Check: frequency data exists for at least 2 sections
+   - Return: {'passed': True/False, 'issues': ['list of any problems found']}
+3. Function run_orchestrator(a1_out, a2_out, a3_out, a4_out) -> dict:
+   - Run quality_check first
+   - If check fails, print which agent needs re-running and return error dict
+   - If check passes, build a comprehensive synthesis prompt with all data
+   - Call GPT-4o with max_tokens=3000
+   - Extract drift scores from the report text using regex
+   - Return: {'report': full_report_text, 'drift_score': int,
+             'sub_scores': {'pragmatic':int, 'semantic':int,
+             'register':int, 'statistical':int}}
+4. Function save_report(report_dict, output_path='outputs/reports/') -> str:
+   - Save the report as a .md file with timestamp in filename
+   - Save the full evidence JSON as a separate .json file
+   - Return the path to the saved report
+STEP 6  ·  PROMPT FOR app.py — The Main Gradio Interface
+FILE TO SAVE: app.py (ROOT of your project)
+PASTE THIS PROMPT INTO ANTIGRAVITY AI:
+Write the main app.py file for a 5-agent linguistics project called PMDD
+(Pragmatic Meaning Drift Detector) using Gradio for the user interface.
+REQUIREMENTS:
+1. Import all five agents:
+   from agents.agent1_preprocessor import run_agent1
+   from agents.agent2_pragmatic import run_agent2
+   from agents.agent3_semantic import run_agent3
+   from agents.agent4_statistics import run_agent4
+   from agents.agent5_orchestrator import run_orchestrator, save_report
+2. Create a main function analyze_corpus(file_obj, keywords_input, corpus_name):
+   - Parse keywords_input as a comma-separated list
+   - Run agents 1 to 5 in sequence
+   - After each agent, yield a progress update message
+   - If any agent fails with an exception, catch it and report the error
+   - After Agent 5, call save_report and display the path
+   - Return: progress_log (str), final_report (str), drift_score (str)
+3. Build a Gradio Blocks interface with:
+   INPUTS:
+   - gr.File: Upload your corpus (.txt, .pdf, .csv, .json)
+   - gr.Textbox: Corpus name (optional, e.g. 'pakistan_press_2024')
+   - gr.Textbox: Target keywords (comma-separated, e.g. 'democracy, power, people')
+   - gr.Button: 'Run Full PMDD Pipeline'
+   OUTPUTS:
+   - gr.Textbox (lines=8): Agent Progress Log — shows real-time updates
+   - gr.Textbox (lines=30): Full Linguistic Report
+   - gr.Textbox (lines=3): Drift Score Summary
+4. Style the interface:
+   title = 'PMDD — Pragmatic Meaning Drift Detector'
+   description = 'Upload a text corpus and receive a full academic linguistic report.
+                  Five AI agents analyse pragmatic drift, semantic field shifts,
+                  register changes, and corpus statistics.'
+5. Add example inputs:
+   examples = [
+     [None, 'sample_corpus', 'democracy, security, people'],
+     [None, 'news_archive', 'government, policy, change'],
+   ]
+6. Launch with: demo.launch(share=False, debug=True)
+7. Add error handling: if any agent raises an exception,
+   display a helpful error message explaining which agent failed and why.
+STEP 7  ·  PROMPT FOR helpers.py — Shared Utilities
+FILE TO SAVE: utils/helpers.py
+Write a Python utility file utils/helpers.py for a PMDD linguistics project.
+Include these helper functions:
+1. def clean_json_response(text: str) -> str:
+   - Remove markdown code fences (```json and ```) from GPT responses
+   - Strip leading/trailing whitespace
+   - Return clean JSON string ready for json.loads()
+2. def safe_json_parse(text: str, fallback: dict) -> dict:
+   - Try to parse text as JSON after calling clean_json_response
+   - If parsing fails, print the error and return the fallback dict
+   - Never crash — always return a valid dict
+3. def format_progress(agent_num: int, message: str) -> str:
+   - Return formatted string: '[Agent N] message'
+   - Example: '[Agent 2] Analysing segment S045 of 150...'
+4. def get_sections_from_segments(segments: list) -> list:
+   - Extract unique section labels from a segments list
+   - Return sorted list of unique section names
+5. def truncate_for_api(text: str, max_chars: int = 8000) -> str:
+   - If text exceeds max_chars, truncate and add '... [truncated]'
+   - Used to prevent exceeding GPT-4o context limits
+6. def timestamp_filename(prefix: str, ext: str) -> str:
+   - Return a filename like 'pmdd_report_20260514_143022.md'
+   - Use datetime.now() for the timestamp
+SECTION 5 · Inserting Your API Key
+Important — You Must Do This
+After Antigravity AI generates each agent file, you must replace the placeholder YOUR_OPENAI_API_KEY_HERE with your real API key. Do this in Agent 2, Agent 3, Agent 5, and app.py. Never share your API key publicly or upload it to GitHub.
+5.1  Where to Add Your Key
+In each of these files, find the line that says API_KEY = 'YOUR_OPENAI_API_KEY_HERE' and replace it:
+# agents/agent2_pragmatic.py — Line 4
+API_KEY = 'sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# agents/agent3_semantic.py — Line 4
+API_KEY = 'sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# agents/agent5_orchestrator.py — Line 4
+API_KEY = 'sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+5.2  Test Your API Key First
+Before running the full project, test your key works with this quick test. Paste this into Antigravity terminal:
+python3 -c "
+from openai import OpenAI
+client = OpenAI(api_key='YOUR_API_KEY_HERE')
+response = client.chat.completions.create(
+    model='gpt-4o',
+    messages=[{'role':'user','content':'Say: API key works!'}],
+    max_tokens=20
+)
+print(response.choices[0].message.content)
+"
+If you see 'API key works!' printed — you're ready to proceed.
+SECTION 6 · Running the Project — Step by Step
+6.1  Before Your First Run — Checklist
+☐
+All 7 files created: agent1 through agent5, helpers.py, app.py
+☐
+API key inserted in agent2_pragmatic.py
+☐
+API key inserted in agent3_semantic.py
+☐
+API key inserted in agent5_orchestrator.py
+☐
+All libraries installed: openai, spacy, nltk, pandas, gradio, pymupdf
+☐
+spaCy English model downloaded: python -m spacy download en_core_web_sm
+☐
+API key tested and confirmed working
+☐
+A .txt test corpus prepared (at least 50 sentences for testing)
+☐
+outputs/reports/ folder created
+6.2  How to Start the App
+# In Antigravity IDE terminal — navigate to your project folder:
+cd pmdd_project
+# Run the app:
+python app.py
+# Gradio will display a URL like:
+# Running on local URL: http://127.0.0.1:7860
+# Open that URL in your browser
+6.3  Using the App
+Open the Gradio URL in your browser
+Click 'Choose File' and upload your .txt corpus
+Type a corpus name (optional, e.g. 'test_corpus')
+Type your target keywords separated by commas (e.g. 'democracy, power, people')
+Click 'Run Full PMDD Pipeline'
+Watch the Agent Progress Log — each agent reports when it finishes
+When Agent 5 finishes, read the Full Linguistic Report in the output box
+Check outputs/reports/ folder for your saved .md and .json files
+SECTION 7 · Common Errors and How to Fix Them
+Error
+Fix
+ModuleNotFoundError: spacy
+Run: pip install spacy  then  python -m spacy download en_core_web_sm
+AuthenticationError: Invalid API key
+Double-check your API key — copy it fresh from platform.openai.com
+RateLimitError from OpenAI
+Increase the time.sleep() value in agent2 from 0.5 to 1.5 seconds
+JSONDecodeError when parsing response
+Use the safe_json_parse() helper from helpers.py — it catches bad JSON
+FileNotFoundError for corpus
+Make sure your file is uploaded and the path is correct
+Gradio port already in use
+Change demo.launch() to demo.launch(server_port=7861)
+Agent 5 reports quality check failed
+Reduce your corpus to a simpler .txt file first for testing
+ImportError for agents module
+Make sure agents/__init__.py file exists (can be empty)
+SECTION 8 · Document Metadata & Quick Reference
+Document Title
+PMDD Project — Complete Step-by-Step Guide
+Project Name
+Pragmatic Meaning Drift Detector (PMDD)
+Version
+1.0 — May 2026
+Platform
+Antigravity IDE (Google)
+Backend API
+OpenAI GPT-4o
+Language
+Python 3.10+
+Number of Agents
+5
+Linguistic Frameworks
+Speech Act Theory · Gricean Maxims · Semantic Field Theory · Register Analysis · Corpus Linguistics · Critical Discourse Analysis
+Libraries Required
+openai · spacy · nltk · pandas · gradio · pymupdf
+Output Format
+Markdown Report + Evidence JSON + Drift Score Dashboard
+Target Users
+Computational Linguistics students · Researchers
+Course
+Computational Linguistics — Agentic AI Module
+8.1  Quick Reference — All 7 Prompts Summary
+Step
+File
+Agent / Purpose
+1
+agents/agent1_preprocessor.py
+Agent 1 — Cleans & segments raw corpus text
+2
+agents/agent2_pragmatic.py
+Agent 2 — Classifies speech acts & pragmatic patterns (GPT-4o)
+3
+agents/agent3_semantic.py
+Agent 3 — Detects semantic field shifts & register (GPT-4o)
+4
+agents/agent4_statistics.py
+Agent 4 — Frequency, collocation, TTR, keyness (Pure Python)
+5
+agents/agent5_orchestrator.py
+Agent 5 — Synthesises report & Drift Score (GPT-4o)
+6
+app.py
+Main Gradio app — user interface for the whole pipeline
+7
+utils/helpers.py
+Shared utility functions used by all agents
+Core Principle
+Linguistics First — Technology Second
+The agents are tools. The linguistic evidence they produce must be interpretable, defensible, and grounded in the six theoretical frameworks in this guide. A technically perfect system that produces linguistically invalid findings has failed.

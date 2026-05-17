@@ -1,0 +1,731 @@
+<?xml version='1.0' encoding='utf-8'?>
+<NETWORK VERSION='1.1'>
+
+  <ROOT>
+    <FEATURE>
+      <NAME>transitivity</NAME>
+      <STATE>active</STATE>
+    </FEATURE>
+  </ROOT>
+
+  <SYSTEMS>
+
+    <!-- ============================================================
+         TOP LEVEL: TRANSITIVITY → processes | participants | circumstances | voice
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>TRANSITIVITY-TYPE</NAME>
+      <EC>transitivity</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>processes</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>circumstances</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>voice</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         VOICE
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>VOICE-TYPE</NAME>
+      <EC>voice</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>active</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The Actor/Senser/Sayer is the grammatical Subject. The process unfolds from the participant. (e.g., "K-Electric reduced supply.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>passive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The Goal/Phenomenon is the grammatical Subject. The Agent is backgrounded or deleted. (e.g., "Supply was reduced [by K-Electric].")</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         PROCESS TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>PROCESSES-TYPE</NAME>
+      <EC>processes</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>material</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of doing and happening in the external world. Construes change in the physical or social environment. Participants: Actor, Goal. (e.g., "K-Electric reduced supply.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>mental</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of sensing — thinking, feeling, perceiving, desiring. Requires a conscious Senser. Participants: Senser, Phenomenon. (e.g., "People know the situation.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>relational</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of being, having, and becoming. Classifies or identifies entities. Participants vary by sub-type: Carrier+Attribute (attributive) or Token+Value (identifying). (e.g., "Power is a basic necessity.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>verbal</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of saying and symbolic exchange. Boundary process between mental and relational. Participants: Sayer, Receiver, Verbiage, Target. (e.g., "K-Electric claims a shortage of oil.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>behavioral</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of physiological and psychological behavior. Boundary between material and mental. Participants: Behaver, Behavior. (e.g., "People suffer in the heat.")</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>existential</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes asserting the existence of entities. Typically realized by there is/are. Participant: Existent. (e.g., "There are repeated technical faults.")</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         MATERIAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>MATERIAL-TYPE</NAME>
+      <EC>material</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>creative</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Brings something into existence that did not exist before. Verbs: build, create, make, write, compose, develop, produce.
+Example: "K-Electric produces energy."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>transformative</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Changes or transforms an already-existing entity. Verbs: reduce, increase, improve, fix, damage, destroy, alter.
+Example: "The pandemic reduced consumption."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>transitive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Action directed at and affecting a Goal. Verbs: hit, break, take, unleash, hold, deliver, use.
+Example: "K-Electric unleashed load-shedding on the people."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>intransitive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Action or event with no Goal. Only Actor is present. Verbs: run, walk, go, come, sit, last, happen.
+Example: "People go in their state of misery."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>ditransitive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Action involving both a Goal and a Beneficiary (Recipient or Client). Verbs: give, send, deliver, offer, provide.
+Example: "They deliver energy to consumers."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         MENTAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>MENTAL-TYPE</NAME>
+      <EC>mental</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>cognition</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of thinking, knowing, understanding, believing. Verbs: know, think, believe, understand, consider, realize.
+Example: "Both governments must take notice of this situation."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>perception</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of sensory or evaluative perception. Verbs: see, hear, feel, notice, observe, seem, appear.
+Example: "It seems even more senseless this time around."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>reaction</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of emotional reaction, feeling, or attitude. Verbs: like, hate, fear, enjoy, find (evaluative), mind.
+Example: "Relatives find it much more difficult."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>desideration</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Processes of desire, intention, or wish. Verbs: want, wish, hope, desire, intend, need.
+Example: "The people need uninterrupted power supply."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         RELATIONAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>RELATIONAL-TYPE</NAME>
+      <EC>relational</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>attributive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Assigns a quality or characteristic to a Carrier. Structure: Carrier + Attribute. NOT reversible.
+Verbs: is, are, was, become, remain, seem, appear.
+Example: "The heat becomes unbearable." (Carrier=heat; Attribute=unbearable)</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>identifying</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Defines or identifies one entity in terms of another. Structure: Token + Value. IS reversible (Token=Value and Value=Token).
+Verbs: is, represents, equals, means, defines, constitutes.
+Example: "Power is a basic necessity." (Token=Power; Value=basic necessity)</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>circumstantial</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Locates a Carrier in a circumstantial relation. Structure: Carrier + Circumstantial Attribute (at/in/on a location or time).
+Example: "Karachi is in the grip of long power outages."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>possessive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Indicates ownership or possession between entities. Structure: Possessor + Possessed.
+Verbs: have, own, possess, contain, include.
+Example: "The company has thousands of employees."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         VERBAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>VERBAL-TYPE</NAME>
+      <EC>verbal</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>addressee-oriented</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Saying directed at a specific Receiver/addressee. Verbs: tell, inform, ask, order, promise, instruct.
+Example: "K-Electric often tells the public about oil shortage."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>non-addressee-oriented</NAME>
+          <STATE>active</STATE>
+          <GLOSS>General acts of communication not directed at a specific addressee. Verbs: say, state, announce, claim, report, mention.
+Example: "One reason K-Electric uses for this is the shortage of oil."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         BEHAVIORAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>BEHAVIORAL-TYPE</NAME>
+      <EC>behavioral</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>physiological</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Bodily actions reflecting physical states or biological processes. Verbs: breathe, cough, sleep, sweat, endure, suffer.
+Example: "People endure long power failures."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>psychological</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Observable behaviors reflecting mental or emotional states. Verbs: smile, laugh, stare, cry, worry, frown.
+Example: "People worry about the situation."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>verbal-behavioral</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Behavioral processes that overlap with verbal processes — communicative behaviors. Verbs: chat, grumble, murmur, complain, mutter.
+Example: "Residents grumble about the outages."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         EXISTENTIAL SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>EXISTENTIAL-TYPE</NAME>
+      <EC>existential</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>neutral</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Asserts the simple existence of an entity. Realized by there is/are/was/were.
+Example: "There are also repeated technical faults at Bin Qasim Station."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>eventive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Asserts the occurrence of an event or happening. Realized by there occur/happen/exist.
+Example: "There happen to be faults at the station."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         PARTICIPANTS BRANCH
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>PARTICIPANTS-TYPE</NAME>
+      <EC>participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>material-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>mental-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>relational-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>verbal-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>behavioral-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+        <FEATURE>
+          <NAME>existential-participants</NAME>
+          <STATE>active</STATE>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         MATERIAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>MATERIAL-PARTICIPANTS-TYPE</NAME>
+      <EC>material-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>actor</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Entity that performs, initiates, or causes the material process. In active clauses = Subject. In passive = Agent (by-phrase).
+Example: "K-Electric [Actor] unleashed load-shedding."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>goal</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Entity that is directly affected, impacted, or brought about by the material process. In passive = Subject.
+Example: "K-Electric unleashed load-shedding [Goal]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>beneficiary</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Entity that benefits from the action. Realized as indirect object or prepositional phrase (to/for).
+Example: "They deliver energy to consumers [Beneficiary]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>range</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies the domain, scope, or extent of the process without being affected by it. Closely tied to the process verb.
+Example: "She plays the piano [Range]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>client</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Entity for whose benefit the action is performed, when not identical to Recipient. Often realized by for-phrase.
+Example: "She baked a cake for him [Client]."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         MENTAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>MENTAL-PARTICIPANTS-TYPE</NAME>
+      <EC>mental-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>senser</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The conscious being who perceives, thinks, feels, or desires. Must be human or personified entity. In active = Subject.
+Example: "Both infected people and relatives [Senser] find it difficult."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>phenomenon</NAME>
+          <STATE>active</STATE>
+          <GLOSS>What is perceived, thought about, felt, or desired by the Senser. Can be a Thing, Fact, or Act.
+Example: "People know the situation [Phenomenon]."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         RELATIONAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>RELATIONAL-PARTICIPANTS-TYPE</NAME>
+      <EC>relational-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>carrier</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Entity that bears or is assigned an Attribute (in attributive clauses). Typically the Subject.
+Example: "The heat [Carrier] becomes unbearable."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>attribute</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Quality, characteristic, or class assigned to the Carrier (in attributive clauses). Typically Complement.
+Example: "The heat becomes unbearable [Attribute]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>token</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The sign or expression being defined/identified (in identifying clauses). The variable element.
+Example: "Power [Token] is a basic necessity."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>value</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The meaning, identity, or definition assigned (in identifying clauses). The constant element.
+Example: "Power is a basic necessity [Value]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>possessor</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity that owns or possesses something (in possessive clauses).
+Example: "The company [Possessor] has thousands of employees."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>possessed</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity that is owned or possessed (in possessive clauses).
+Example: "The company has thousands of employees [Possessed]."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         VERBAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>VERBAL-PARTICIPANTS-TYPE</NAME>
+      <EC>verbal-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>sayer</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity that produces the verbal act. Need not be human — reports, signs, documents can be Sayers.
+Example: "K-Electric [Sayer] claims a shortage of oil."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>receiver</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity to whom the verbal act is addressed. Only present in addressee-oriented verbal processes.
+Example: "K-Electric told the people [Receiver] about the shortage."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>verbiage</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The content of the verbal act — what is said. Can be a direct quote, indirect report, or nominalization.
+Example: "K-Electric claimed [Verbiage: a shortage of oil]."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>target</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity at which the verbal act is directed (in verbal acts like criticize, accuse, blame).
+Example: "The editorial accuses K-Electric [Target]."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         BEHAVIORAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>BEHAVIORAL-PARTICIPANTS-TYPE</NAME>
+      <EC>behavioral-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>behaver</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The conscious entity exhibiting the behavioral process. Analogous to Senser in mental processes.
+Example: "People [Behaver] endure long power failures."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>behavior</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The behavioral act itself (optional participant). Analogous to Range in material processes.
+Example: "She [Behaver] gave a sigh [Behavior]."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         EXISTENTIAL PARTICIPANTS
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>EXISTENTIAL-PARTICIPANTS-TYPE</NAME>
+      <EC>existential-participants</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>existent</NAME>
+          <STATE>active</STATE>
+          <GLOSS>The entity whose existence is asserted. Follows the existential process verb (there is/are).
+Example: "There are repeated technical faults [Existent] at Bin Qasim Station."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         CIRCUMSTANCES BRANCH
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>CIRCUMSTANCES-TYPE</NAME>
+      <EC>circumstances</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>location</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies where or when the process takes place.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>extent</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies the distance or duration of the process.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>manner</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies how the process takes place — quality, means, or comparison.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>cause</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies why the process takes place — reason, purpose, or behalf.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>contingency</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies a conditional or concessive relationship to the process.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>accompaniment</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies what or who accompanies the process.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>role</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies in what guise or capacity an entity participates.</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>matter</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies what the process is about or concerning. Probe: about what? with respect to what?
+Example: "of this situation"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>angle</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Specifies the viewpoint or source from which the process is seen. Probe: from whose viewpoint? according to whom?</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         LOCATION SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>LOCATION-TYPE</NAME>
+      <EC>location</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>spatial</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Where? Realized by prepositional phrases of place.
+Prepositions: in, at, on, near, across, through, over, under.
+Example: "across the city" / "at Bin Qasim Station"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>temporal</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: When? Realized by prepositional phrases or adverbs of time.
+Prepositions: in, at, on, during, after, before, recently.
+Example: "in summer months" / "this time around"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         EXTENT SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>EXTENT-TYPE</NAME>
+      <EC>extent</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>spatial-extent</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: How far? The distance covered by the process.
+Example: "for miles" / "throughout the country"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>temporal-extent</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: How long? The duration of the process.
+Example: "for as long as 12 hours" / "throughout the summer"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         MANNER SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>MANNER-TYPE</NAME>
+      <EC>manner</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>means</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: By what means? Specifies the instrument or method of the process.
+Example: "either because of planned load-shedding or due to technical faults"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>quality</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: How? In what manner? Realized by adverbs of manner.
+Example: "substantially" / "immediately" / "seriously"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>comparison</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Like what? Realized by comparative phrases.
+Example: "as they normally would have" / "like most megacities"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         CAUSE SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>CAUSE-TYPE</NAME>
+      <EC>cause</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>reason</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Why? The cause or motivation for the process.
+Prepositions/conjunctions: because, because of, due to, owing to, since.
+Example: "because of the fact that households are at home"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>purpose</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: For what purpose? The intended goal of the process.
+Prepositions: for, in order to, so as to.
+Example: "for this practice" / "to take care of the patient"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>behalf</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: For whose sake? On whose behalf is the process carried out?
+Prepositions: for, on behalf of.
+Example: "for the residents of Karachi"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         CONTINGENCY SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>CONTINGENCY-TYPE</NAME>
+      <EC>contingency</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>condition</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Under what condition? A conditional dependency on the process.
+Conjunctions: if, unless, provided that, in case.
+Example: "If the supply of furnace oil is inconsistent..."</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>concession</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Despite what? An unexpected or contrasting condition.
+Conjunctions: though, although, even though, despite.
+Example: "Though the practice has become a routine matter..."</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         ACCOMPANIMENT SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>ACCOMPANIMENT-TYPE</NAME>
+      <EC>accompaniment</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>comitative</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Together with whom/what? An entity accompanying the process.
+Prepositions: with, together with, along with.
+Example: "with millions of apartments in close proximity"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>additive</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: In addition to what? An entity added to the process.
+Prepositions/adverbs: also, as well, in addition, at the same time.
+Example: "at the same time" / "also"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+    <!-- ============================================================
+         ROLE SUB-TYPES
+    ============================================================ -->
+    <SYSTEM>
+      <NAME>ROLE-TYPE</NAME>
+      <EC>role</EC>
+      <FEATURES>
+        <FEATURE>
+          <NAME>guise</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: As what? In what capacity? Specifies the role in which an entity participates.
+Prepositions: as, in the role of.
+Example: "as a pretext to power outages"</GLOSS>
+        </FEATURE>
+        <FEATURE>
+          <NAME>product</NAME>
+          <STATE>active</STATE>
+          <GLOSS>Answers: Into what? What the participant becomes as a result of the process.
+Prepositions: into, as.
+Example: "turned into a crisis" / "privatized as a company"</GLOSS>
+        </FEATURE>
+      </FEATURES>
+    </SYSTEM>
+
+  </SYSTEMS>
+
+</NETWORK>
